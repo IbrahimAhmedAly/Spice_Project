@@ -1,0 +1,76 @@
+﻿
+@model Coupon
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h1 class="text-info">Coupon Details</h1>
+<br />
+
+<form method="post" role="form" asp-action="Delete" enctype="multipart/form-data">
+    <div class="border backgroundWhite">
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" disabled asp-for="Name" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="picture" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="file" disabled name="files" id="projectImage" multiple asp-for="picture" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CouponType" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <select class="form-control" asp-for="CouponType" asp-items="Html.GetEnumSelectList<Coupon.ECouponType>()"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Discount" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="Discount" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="MinimumAmount" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="MinimumAmount" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="IsActive" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="checkbox" asp-for="IsActive" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DeleteAndBackListButton" model="@Model.Id">
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+

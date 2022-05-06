@@ -1,0 +1,44 @@
+﻿
+@model SubCategoryAndCategoryViewModel
+@using Spice.Extensions
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h1 class="text-info">Delete SubCategory</h1>
+<br />
+<div class="border backgroundWhite row">
+    <div class="col-9">
+        <form method="post" role="form" asp-controller="SubCategory" asp-action="Delete">
+            <p class="text-warning" style="font-size: 25px">Are You Sure To Delete This Category?</p>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="SubCategory.CategoryId" class="col-form-label"></label>
+                </div>
+                <div class="col-6">
+                    <select class="form-control" id="ddlCategorylist" disabled asp-for="SubCategory.CategoryId" asp-items="Model.CategoryList.ToSelectListItem(Model.SubCategory.CategoryId)">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="SubCategory.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-6">
+                    <input type="text" disabled asp-for="SubCategory.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="SubCategory.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-5 offset-3">
+                    <partial name="_DeleteAndBackListButton" model="@Model.SubCategory.Id">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+  
